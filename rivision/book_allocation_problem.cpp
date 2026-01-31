@@ -27,12 +27,13 @@ int bookallocation(int arr[], int n, int m)
     }
     int s = 0;
     int e = sum;
-    int mid = 0;
+    int ans = -1;
     while(s <= e)
     {
-        mid = s + (e - s)/2;
+        int mid = s + (e - s)/2;
         if(possible(arr,n,m,mid)) 
         {
+            ans = mid;
             e = mid - 1;
         }
         else
@@ -40,7 +41,7 @@ int bookallocation(int arr[], int n, int m)
             s = mid + 1;
         }
     }
-    return mid;
+    return ans;
 }
 
 int main()
