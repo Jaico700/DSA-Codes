@@ -27,14 +27,20 @@ int presentcheck(char str1[], char str2[])
 
 void mod(char str[], int len, int index)
 {
-    for(int i = index; i < strlen(str) - len; i++)
+    bool check = 1;
+    while(check = 1)
     {
-        if(str[i + len] == '\0')
+        check = 0;
+        for(int i = index; i < strlen(str) - len; i++)
         {
-            str[i] = '\0';
-            return;
+            if(str[i + len] == '\0')
+            {
+                str[i] = '\0';
+                return;
+            }
+            str[i] = str[i + len];
+            check = 1;
         }
-        str[i] = str[i + len];
     }
     str[strlen(str) - len] = '\0';
 }
