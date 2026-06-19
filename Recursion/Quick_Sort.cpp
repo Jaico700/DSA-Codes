@@ -5,19 +5,17 @@ int partition(int arr[], int s, int e)
 {
     int pivot = arr[s];
     int cnt = 0;
-    for(int i = s + 1; i <= e; i++)
-    {
-        if(arr[i] <= pivot) cnt++;
+    for(int i = s; i <= e; i++){
+        if(arr[i] < pivot) cnt++;
     }
-    int pivot_index = s + cnt;
-    swap(arr[pivot_index], arr[s]);
-    int i = s; 
+    swap(arr[s],arr[s + cnt]);
+    int i = s;
     int j = e;
-    while(i < pivot_index && j > pivot_index)
-    {
-        while(arr[i] < arr[pivot_index]) i++;
-        while(arr[j] > arr[pivot_index]) j++; 
-        if(i < pivot_index && j > pivot_index) swap(arr[i++] , arr[j--]);
+    int pivot_index = s + cnt;
+    while(i < pivot_index && j > pivot_index){
+        while(arr[i] < pivot) i++;
+        while(arr[j] > pivot) j--;
+        if(i < pivot_index && j > pivot_index) swap(arr[i++], arr[j--]);
     }
     return pivot_index;
 }
